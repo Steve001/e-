@@ -79,6 +79,11 @@
 						<font id="error" color="red">${error }</font>
 					</div>
 			</div>
-		
+		<div align="center"><font color="red">${error }</font></div>
+		<div class="pagination pagination-centered">
+			<ul>
+				${pageCode }
+			</ul>
+		</div>
 		
 </div>

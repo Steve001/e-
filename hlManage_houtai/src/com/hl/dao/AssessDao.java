@@ -84,10 +84,12 @@ public class AssessDao {
 		return resAssess;
 	}
 	
-	
-	/*返回评价总数*/
+	/*获取评价总数*/
 	public static int assessCount(Connection con, Assess assess) throws SQLException {
 		StringBuffer sb=new StringBuffer("select count(*) as total  from assess where 1=1");
+		if(StringUtil.isNotEmpty(assess.getManagerName())) {
+			sb.append(" and user_name= '"+assess.getManagerName()+"'");
+		}
 		PreparedStatement pstmt = con.prepareStatement(sb.toString());
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
@@ -96,4 +98,5 @@ public class AssessDao {
 			return 0;
 		}
 	}
+	
 }
